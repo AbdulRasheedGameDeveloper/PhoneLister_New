@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>PhoneLister</title>
+
+    <link href="vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <style>
+body {
+  background: linear-gradient(to bottom right, #9ac9fb, #d7aefb);
+  font-family: 'Open Sans', sans-serif;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+}
+
+form input[type="text"],
+form input[type="number"] {
+  padding: 10px;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  width: 300px;
+  font-size: 16px;
+}
+
+form button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+form button:hover {
+  background-color: #3e8e41;
+}
+
+#adder {
+  text-align: center;
+  margin-top: 50px;
+}
+
+#remover {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.showphonecount {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.phonecount {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.mobileTemplate label {
+  display: block;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.mobileTemplate label span.phoneno {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.mobileTemplate label span.content {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.mobileTemplate label span.price {
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.showphonecount button {
+  background-color: #2196f3;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.showphonecount button:hover {
+  background-color: #1976d2;
+}
+
+.btn {
+  background-color: #2196f3;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn:hover {
+  background-color: #1976d2;
+}
+
+.btn-danger {
+  background-color: #f44336;
+}
+
+.btn-danger:hover {
+  background-color: #d32f2f;
+}
+
+.navbar {
+  background: linear-gradient(to right, #4AC1FF, #A050D7);
+}
+
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" target="_blank">Phone Lister</a>
+        <ul class="navbar-nav px-3">
+          <li class="nav-item text-nowrap d-none d-sm-none d-sm-block">
+            <small><a class="nav-link" href="#"><span id="account"></span></a></small>
+          </li>
+        </ul>
+    </nav>
+
+	<div id="adder">
+		<form onSubmit="App.addMobile(); return false;">
+            <input id="newmobile" type="text" class="form-control" placeholder="Add mobile name..." required>
+            <input id="mobileprice" type="number" class="form-control" placeholder="Add mobile price..." required>
+            <input type="submit" hidden="">
+            <button type="submit">Add Phone</button>
+        </form>
+	</div>
+    <div id="remover">
+        <form onSubmit="App.clearPhone(); return false;">
+            <h4>To remove Phone</h4>
+
+            <input id="mobileId" type="number" class="form-control" placeholder="Specify the Phone No you want to delete..." required>
+            <button type="submit">Clear Phone</button>
+        </form>
+    </div>
+
+    
+    <div class="showphonecount">
+        <button onclick="App.showphonecount()">Show Phone Count</button>
+        <span class="phonecount"></span>
+    </div>
+	<ul id="mobilelist" class="list-unstyled">
+        <div class="mobileTemplate" style="display: none">
+            <label>
+                <span class="phoneno">Phone number goes here...</span>
+                <span class="content">Phone content goes here...</span>
+                <span class="price">Phone price goes here...</span>
+            </label>
+        </div>
+    </ul>
+
+
+
+
+
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/truffle-contract@4.0.31/dist/truffle-contract.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
+    <script src="App.js"></script>
+</body>
+</html>
